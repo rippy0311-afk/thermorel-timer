@@ -123,3 +123,21 @@ kbd { padding: 2px 6px; border: 1px solid #526273; border-radius: 3px; color: va
 }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+/* The three progress panels are a dropdown placed by the top-controls flex row. */
+.top-controls .progress-drawer { position: relative; width: auto; margin: 0; text-align: left; }
+.top-controls .progress-toggle { padding: 9px 12px; border: 1px solid #ff3c9c; background: linear-gradient(135deg,#2b071e,#050505); color: #ffd4e9; cursor: pointer; font: 800 11px/1 "Oxanium",sans-serif; letter-spacing: .09em; box-shadow: 0 0 15px rgba(255,22,134,.32); }
+.top-controls .progress-toggle:hover { border-color: var(--lime); color: var(--lime); transform: translateY(-1px); }
+.top-controls .meta-board { position: absolute; top: calc(100% + 7px); left: 0; z-index: 21; width: 300px; display: grid; grid-template-columns: 1fr; gap: 6px; margin: 0; padding: 8px; border: 1px solid #ff3c9c; background: #08090e; box-shadow: 0 14px 30px rgba(0,0,0,.58); text-align: left; }
+.top-controls .meta-board[hidden] { display: none; }
+.top-controls .meta-card { min-height: 0; padding: 11px 13px; }
+.top-controls .best-score { margin: 3px 0 0; font-size: 34px; }
+.top-controls .leaderboard { margin-top: 6px; }
+.top-controls .leaderboard li { padding: 3px 2px; }
+.top-controls .leaderboard li strong { font-size: 15px; }
+.top-controls .achievement-list { margin-top: 6px; gap: 4px; }
+.top-controls .achievement { padding: 4px 6px; font-size: 8px; }
+
+@media (max-width: 760px) {
+  .top-controls .meta-board { right: 0; left: auto; width: min(300px, calc(100vw - 20px)); }
+}

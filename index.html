@@ -13,6 +13,24 @@
   </head>
   <body>
     <div class="top-controls">
+      <section class="progress-drawer" aria-label="Player progress">
+        <button class="progress-toggle" id="progressToggle" type="button" aria-expanded="false" aria-controls="metaBoard">▾ PROGRESS</button>
+        <div class="meta-board" id="metaBoard" hidden>
+          <article class="meta-card highscore-card">
+            <p class="meta-label">PERSONAL BEST</p>
+            <p class="best-score" id="bestScore">0</p>
+            <p class="meta-copy" id="bestNote">Finish a game to set a record.</p>
+          </article>
+          <article class="meta-card leaderboard-card">
+            <p class="meta-label">LOCAL RANKING</p>
+            <ol class="leaderboard" id="leaderboard" aria-label="Local top scores"></ol>
+          </article>
+          <article class="meta-card achievement-card">
+            <p class="meta-label">ACHIEVEMENTS</p>
+            <ul class="achievement-list" id="achievementList" aria-label="Achievements"></ul>
+          </article>
+        </div>
+      </section>
       <button class="account-button" id="accountButton" type="button" onclick="document.getElementById('accountDialog').showModal()">◉ ACCOUNT</button>
       <button class="share-button" id="shareButton" type="button" aria-label="Share THERMOREL">↗ SHARE</button>
     </div>
@@ -71,24 +89,6 @@
         <img src="assets/thermorel.png" alt="A thermal-color portrait wearing sunglasses" />
       </aside>
     </main>
-    <section class="progress-drawer" aria-label="Player progress">
-      <button class="progress-toggle" id="progressToggle" type="button" aria-expanded="false" aria-controls="metaBoard">▾ SHOW PROGRESS</button>
-      <div class="meta-board" id="metaBoard" hidden>
-      <article class="meta-card highscore-card">
-        <p class="meta-label">PERSONAL BEST</p>
-        <p class="best-score" id="bestScore">0</p>
-        <p class="meta-copy" id="bestNote">Finish a game to set a record.</p>
-      </article>
-      <article class="meta-card leaderboard-card">
-        <p class="meta-label">LOCAL RANKING</p>
-        <ol class="leaderboard" id="leaderboard" aria-label="Local top scores"></ol>
-      </article>
-      <article class="meta-card achievement-card">
-        <p class="meta-label">ACHIEVEMENTS</p>
-        <ul class="achievement-list" id="achievementList" aria-label="Achievements"></ul>
-      </article>
-      </div>
-    </section>
     <p class="keyboard-tip">TIP: Press <kbd>Space</kbd> to start or stop.</p>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="game.js"></script>
