@@ -19,6 +19,11 @@
           <h1 id="game-title">THERMOREL</h1>
         </header>
 
+        <div class="mode-switch" role="group" aria-label="Game mode">
+          <button class="mode-button is-selected" id="soloMode" type="button" aria-pressed="true">SOLO</button>
+          <button class="mode-button" id="versusMode" type="button" aria-pressed="false">VERSUS</button>
+        </div>
+
         <p class="target" id="target" aria-live="polite">TARGET 7 SECONDS</p>
 
         <section class="timer-frame" aria-label="Elapsed time">
@@ -45,6 +50,21 @@
         <img src="assets/thermorel.png" alt="A thermal-color portrait wearing sunglasses" />
       </aside>
     </main>
+    <section class="meta-board" aria-label="Player progress">
+      <article class="meta-card highscore-card">
+        <p class="meta-label">PERSONAL BEST</p>
+        <p class="best-score" id="bestScore">0</p>
+        <p class="meta-copy" id="bestNote">Finish a game to set a record.</p>
+      </article>
+      <article class="meta-card leaderboard-card">
+        <p class="meta-label">LOCAL RANKING</p>
+        <ol class="leaderboard" id="leaderboard" aria-label="Local top scores"></ol>
+      </article>
+      <article class="meta-card achievement-card">
+        <p class="meta-label">ACHIEVEMENTS</p>
+        <ul class="achievement-list" id="achievementList" aria-label="Achievements"></ul>
+      </article>
+    </section>
     <p class="keyboard-tip">TIP: Press <kbd>Space</kbd> to start or stop.</p>
     <script src="game.js"></script>
   </body>

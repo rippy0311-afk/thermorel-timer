@@ -1,86 +1,19 @@
-const TOTAL_ROUNDS = 5;
-const elements = {
-  target: document.querySelector('#target'), timer: document.querySelector('#timer'), timerNote: document.querySelector('#timerNote'),
-  mainButton: document.querySelector('#mainButton'), restartButton: document.querySelector('#restartButton'), result: document.querySelector('#result'),
-  score: document.querySelector('#score'), round: document.querySelector('#round'), combo: document.querySelector('#combo')
-};
-
-let state;
-
-function randomTarget() { return Math.floor(Math.random() * 6) + 5; }
-function freshState() { return { playing: false, startTime: 0, target: randomTarget(), score: 0, round: 1, combo: 0, perfects: 0, frame: null, finished: false }; }
-
-function render() {
-  elements.target.textContent = state.finished ? 'GAME COMPLETE' : `TARGET ${state.target} SECONDS`;
-  elements.score.textContent = state.score;
-  elements.round.textContent = `${Math.min(state.round, TOTAL_ROUNDS)} / ${TOTAL_ROUNDS}`;
-  elements.combo.textContent = state.combo;
-}
-
-function setResult(message, kind = '') {
-  elements.result.textContent = message;
-  elements.result.className = `result ${kind}`;
-}
-
-function startTimer() {
-  if (state.finished) return;
-  state.playing = true;
-  state.startTime = performance.now();
-  elements.mainButton.textContent = 'STOP';
-  elements.timer.textContent = '0.00';
-  elements.timer.classList.remove('is-hidden');
-  elements.timerNote.hidden = true;
-  setResult('Watch the timer — it disappears in the final second.');
-  state.frame = requestAnimationFrame(updateTimer);
-}
-
-function updateTimer(now) {
-  if (!state.playing) return;
-  const elapsed = (now - state.startTime) / 1000;
-  elements.timer.textContent = elapsed.toFixed(2);
-  if (elapsed >= state.target - 1) {
-    elements.timer.classList.add('is-hidden');
-    elements.timerNote.hidden = false;
-  }
-  state.frame = requestAnimationFrame(updateTimer);
-}
-
-function grade(difference) {
-  if (difference < 0.005) return { label: 'PERFECT!', points: 100, kind: 'is-perfect', combo: true, perfect: true };
-  if (difference < 0.10) return { label: 'GREAT!', points: 80, kind: 'is-great', combo: true };
-  if (difference < 0.30) return { label: 'GOOD', points: 50, kind: 'is-great' };
-  if (difference < 0.50) return { label: 'BAD', points: 30, kind: 'is-miss' };
-  return { label: 'MISS', points: 2, kind: 'is-miss' };
-}
-
-function stopTimer() {
-  if (!state.playing) return;
-  state.playing = false;
-  cancelAnimationFrame(state.frame);
-  const elapsed = (performance.now() - state.startTime) / 1000;
-  const difference = Math.abs(state.target - elapsed);
-  const result = grade(difference);
-  state.score += result.points;
-  state.combo = result.combo ? state.combo + 1 : 0;
-  state.perfects += result.perfect ? 1 : 0;
-  elements.timer.classList.remove('is-hidden');
-  elements.timerNote.hidden = true;
-  elements.timer.textContent = elapsed.toFixed(2);
-  elements.mainButton.textContent = 'START';
-  setResult(`${result.label}  +${result.points}  ·  OFF BY ${difference.toFixed(2)}s`, result.kind);
-  state.round += 1;
-  if (state.round > TOTAL_ROUNDS) {
-    state.finished = true;
-    elements.mainButton.disabled = true;
-    setResult(`GAME OVER — ${state.score} POINTS · ${state.perfects} PERFECT${state.perfects === 1 ? '' : 'S'}`, 'is-perfect');
-  } else state.target = randomTarget();
-  render();
-}
-
-function toggleTimer() { state.playing ? stopTimer() : startTimer(); }
-function restartGame() { if (state?.frame) cancelAnimationFrame(state.frame); state = freshState(); elements.mainButton.disabled = false; elements.mainButton.textContent = 'START'; elements.timer.textContent = '0.00'; elements.timer.classList.remove('is-hidden'); elements.timerNote.hidden = true; setResult('Press START. The timer disappears one second before the target.'); render(); }
-
-elements.mainButton.addEventListener('click', toggleTimer);
-elements.restartButton.addEventListener('click', restartGame);
-document.addEventListener('keydown', (event) => { if (event.code === 'Space' && !event.repeat && event.target === document.body) { event.preventDefault(); toggleTimer(); } });
-restartGame();
+const TOTAL=5, KEY='thermorel-progress-v1';
+const E=Object.fromEntries(['target','timer','timerNote','mainButton','restartButton','result','score','round','combo','soloMode','versusMode','bestScore','bestNote','leaderboard','achievementList'].map(x=>[x,document.querySelector('#'+x)]));
+const badges=[['first','FIRST HEAT','Finish one game'],['score','300 CLUB','Score 300 points'],['combo','HOT STREAK','Reach a 3x combo'],['perfect','ZERO ERROR','Get a Perfect']];
+let p=load(),s;
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{scores:[],achievements:[]}}catch{return{scores:[],achievements:[]}}}
+function save(){localStorage.setItem(KEY,JSON.stringify(p))} function rnd(){return Math.floor(Math.random()*6)+5}
+function fresh(mode=s?.mode||'solo'){return{mode,phase:1,targets:Array.from({length:TOTAL},rnd),playing:false,score:0,round:1,combo:0,maxCombo:0,perfects:0,finished:false}}
+function target(){return s.targets[s.round-1]}
+function view(){E.target.textContent=s.finished?'GAME COMPLETE':`${s.mode==='versus'?`P${s.phase} · `:''}TARGET ${target()} SECONDS`;E.score.textContent=s.score;E.round.textContent=`${Math.min(s.round,TOTAL)} / ${TOTAL}`;E.combo.textContent=s.combo;for(const [k,m] of [['soloMode','solo'],['versusMode','versus']]){E[k].classList.toggle('is-selected',s.mode===m);E[k].setAttribute('aria-pressed',s.mode===m)}}
+function progress(){E.bestScore.textContent=p.scores[0]?.score||0;E.bestNote.textContent=p.scores[0]?`${p.scores[0].label} · ${p.scores[0].date}`:'Finish a game to set a record.';E.leaderboard.innerHTML=Array.from({length:5},(_,i)=>`<li><span>#${i+1}</span><strong>${p.scores[i]?.score??'—'}</strong></li>`).join('');E.achievementList.innerHTML=badges.map(([id,a,b])=>`<li class="achievement ${p.achievements.includes(id)?'is-unlocked':''}">${a}<small>${b}</small></li>`).join('')}
+function say(t,k=''){E.result.textContent=t;E.result.className=`result ${k}`}
+function start(){if(s.finished)return;s.playing=true;s.start=performance.now();E.mainButton.textContent='STOP';E.timer.textContent='0.00';E.timer.classList.remove('is-hidden');E.timerNote.hidden=true;say('Watch the timer — it disappears in the final second.');requestAnimationFrame(tick)}
+function tick(now){if(!s.playing)return;let time=(now-s.start)/1000;E.timer.textContent=time.toFixed(2);if(time>=target()-1){E.timer.classList.add('is-hidden');E.timerNote.hidden=false}requestAnimationFrame(tick)}
+function rate(d){if(d<.005)return['PERFECT!',100,'is-perfect',1,1];if(d<.1)return['GREAT!',80,'is-great',1,0];if(d<.3)return['GOOD',50,'is-great',0,0];if(d<.5)return['BAD',30,'is-miss',0,0];return['MISS',2,'is-miss',0,0]}
+function finish(){let out={score:s.score,maxCombo:s.maxCombo,perfects:s.perfects};if(!p.achievements.includes('first'))p.achievements.push('first');if(out.score>=300&&!p.achievements.includes('score'))p.achievements.push('score');if(out.maxCombo>=3&&!p.achievements.includes('combo'))p.achievements.push('combo');if(out.perfects&&!p.achievements.includes('perfect'))p.achievements.push('perfect');if(s.mode==='versus'&&s.phase===1){s.player1Score=out.score;s.phase=2;s.score=0;s.round=1;s.combo=0;s.maxCombo=0;s.perfects=0;say(`PLAYER 1: ${out.score} POINTS — PLAYER 2, YOUR TURN.`,'is-great');return}p.scores.push({score:out.score,label:s.mode==='versus'?`P${s.phase}`:'SOLO',date:new Date().toLocaleDateString()});p.scores.sort((a,b)=>b.score-a.score);p.scores=p.scores.slice(0,5);save();progress();s.finished=true;E.mainButton.disabled=true;const versus=s.mode==='versus';const winner=out.score===s.player1Score?'DRAW':out.score>s.player1Score?'PLAYER 2 WINS':'PLAYER 1 WINS';say(versus?`${winner} · P1 ${s.player1Score} / P2 ${out.score}`:`GAME OVER — ${out.score} POINTS · ${out.perfects} PERFECT${out.perfects===1?'':'S'}`,'is-perfect')}
+function stop(){if(!s.playing)return;s.playing=false;let time=(performance.now()-s.start)/1000,d=Math.abs(target()-time),r=rate(d);s.score+=r[1];s.combo=r[3]?s.combo+1:0;s.maxCombo=Math.max(s.maxCombo,s.combo);s.perfects+=r[4];E.timer.classList.remove('is-hidden');E.timerNote.hidden=true;E.timer.textContent=time.toFixed(2);E.mainButton.textContent='START';say(`${r[0]} +${r[1]} · OFF BY ${d.toFixed(2)}s`,r[2]);s.round++;if(s.round>TOTAL)finish();view()}
+function reset(){s=fresh(s?.mode);E.mainButton.disabled=false;E.mainButton.textContent='START';E.timer.textContent='0.00';E.timer.classList.remove('is-hidden');E.timerNote.hidden=true;say(s.mode==='versus'?'Player 1 starts. Both players receive the same targets.':'Press START. The timer disappears one second before the target.');view()}
+function mode(m){if(!s.playing){s=fresh(m);reset()}}
+E.mainButton.onclick=()=>s.playing?stop():start();E.restartButton.onclick=reset;E.soloMode.onclick=()=>mode('solo');E.versusMode.onclick=()=>mode('versus');document.addEventListener('keydown',e=>{if(e.code==='Space'&&!e.repeat&&e.target===document.body){e.preventDefault();E.mainButton.click()}});reset();progress();
