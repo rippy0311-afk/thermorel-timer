@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050505" />
+    <meta name="description" content="A five-round hidden timer arcade game." />
+    <title>TherMorel — Hidden Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Oxanium:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="game-panel" aria-labelledby="game-title">
+        <header class="brand-frame">
+          <p class="brand-kicker">THE HIDDEN TIMER GAME</p>
+          <h1 id="game-title">THERMOREL</h1>
+        </header>
+
+        <p class="target" id="target" aria-live="polite">TARGET 7 SECONDS</p>
+
+        <section class="timer-frame" aria-label="Elapsed time">
+          <p class="timer-label">ELAPSED</p>
+          <p class="timer" id="timer" aria-live="off">0.00</p>
+          <p class="timer-hidden-note" id="timerNote" hidden>Timer hidden — stop when you think the target time has arrived.</p>
+        </section>
+
+        <div class="actions">
+          <button class="button button-primary" id="mainButton" type="button">START</button>
+          <button class="button button-secondary" id="restartButton" type="button">RESTART</button>
+        </div>
+
+        <p class="result" id="result" aria-live="polite">Press START. The timer disappears one second before the target.</p>
+
+        <dl class="stats" aria-label="Game status">
+          <div class="stat stat-score"><dt>SCORE</dt><dd id="score">0</dd></div>
+          <div class="stat stat-round"><dt>ROUND</dt><dd id="round">1 / 5</dd></div>
+          <div class="stat stat-combo"><dt>COMBO</dt><dd id="combo">0</dd></div>
+        </dl>
+      </section>
+
+      <aside class="art-panel" aria-label="Thermal portrait artwork">
+        <img src="assets/thermorel.png" alt="A thermal-color portrait wearing sunglasses" />
+      </aside>
+    </main>
+    <p class="keyboard-tip">TIP: Press <kbd>Space</kbd> to start or stop.</p>
+    <script src="game.js"></script>
+  </body>
+</html>
