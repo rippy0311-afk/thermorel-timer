@@ -71,7 +71,9 @@
         <img src="assets/thermorel.png" alt="A thermal-color portrait wearing sunglasses" />
       </aside>
     </main>
-    <section class="meta-board" aria-label="Player progress">
+    <section class="progress-drawer" aria-label="Player progress">
+      <button class="progress-toggle" id="progressToggle" type="button" aria-expanded="false" aria-controls="metaBoard">▾ SHOW PROGRESS</button>
+      <div class="meta-board" id="metaBoard" hidden>
       <article class="meta-card highscore-card">
         <p class="meta-label">PERSONAL BEST</p>
         <p class="best-score" id="bestScore">0</p>
@@ -85,6 +87,7 @@
         <p class="meta-label">ACHIEVEMENTS</p>
         <ul class="achievement-list" id="achievementList" aria-label="Achievements"></ul>
       </article>
+      </div>
     </section>
     <p class="keyboard-tip">TIP: Press <kbd>Space</kbd> to start or stop.</p>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
