@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rippy0311-afk.github.io/thermorel-timer/sitemap.xml
