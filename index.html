@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Oxanium:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=sticker-jam-1" />
+    <link rel="stylesheet" href="style.css?v=room-loading-1" />
   </head>
   <body>
     <div class="viewport-warning" role="alert" aria-live="assertive">
@@ -63,6 +63,13 @@
           <button class="online-action create" id="onlineCreate" type="button">CREATE ROOM</button>
           <button class="online-action join" id="onlineJoin" type="button">JOIN ROOM</button>
         </div>
+      </section>
+      <section class="online-loading-screen" id="onlineLoadingScreen" hidden aria-live="polite">
+        <div class="loading-ring" aria-hidden="true"></div>
+        <p class="brand-kicker">THERMOREL NETWORK</p>
+        <h2>CREATING ROOM</h2>
+        <p>ROOMを準備しています…</p>
+        <button class="loading-cancel" id="onlineCreateCancel" type="button">× CANCEL</button>
       </section>
       <section class="online-join-screen" id="onlineJoinScreen" hidden aria-labelledby="joinTitle">
         <button class="overlay-close" id="joinBack" type="button" aria-label="Back">←</button>
@@ -132,6 +139,6 @@
     </main>
     <p class="keyboard-tip">TIP: Press <kbd>Space</kbd> to start or stop.</p>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="game.js?v=sticker-jam-1"></script>
+    <script src="game.js?v=room-loading-1"></script>
   </body>
 </html>
