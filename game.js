@@ -1,5 +1,5 @@
 const TOTAL=5, KEY='thermorel-progress-v1';
-const ACCOUNT_KEY='thermorel-account-v1';
+const ACCOUNT_KEY='thermorel-account-v2';
 const db=window.supabase?.createClient('https://zzowexahijdlupfurgcs.supabase.co','sb_publishable_jvtfEALEbtnzKM5YLivUAQ_CO3TAZXF');
 const E=Object.fromEntries(['target','targetChange','timer','timerNote','mainButton','restartButton','shareButton','accountButton','accountDialog','accountForm','accountTitle','accountCopy','playerName','playerPin','accountError','accountSubmit','accountToggle','createRoom','joinRoom','roomCode','roomStatus','result','score','round','combo','soloMode','versusMode','bestScore','bestNote','leaderboard','achievementList'].map(x=>[x,document.querySelector('#'+x)]));
 const badges=[['first','FIRST HEAT','Finish one game'],['score','300 CLUB','Score 300 points'],['combo','HOT STREAK','Reach a 3x combo'],['perfect','ZERO ERROR','Get a Perfect']];
