@@ -57,6 +57,8 @@ body {
 h1 { margin: 0; font-family: "Barlow Condensed", sans-serif; font-size: clamp(68px, 9vw, 116px); font-style: italic; font-weight: 800; letter-spacing: -.055em; line-height: .78; background: linear-gradient(180deg, var(--lime) 17%, #5acefb 57%, var(--pink) 77%); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 3px 3px 0 #132d8e; }
 
 .target { width: max-content; max-width: 100%; margin: 22px auto 24px; padding: 9px 28px; border: 2px solid var(--lime); color: var(--white); background: var(--black); font-size: clamp(17px, 2.2vw, 25px); font-weight: 800; letter-spacing: .055em; text-align: center; box-shadow: 0 0 18px rgba(201,255,0,.1); }
+.target-change { margin: -15px auto 13px; color: var(--pink); font-size: 13px; font-weight: 800; letter-spacing: .09em; text-align: center; animation: target-flash .7s ease-in-out 2; }
+@keyframes target-flash { 50% { opacity: .35; transform: scale(1.06); } }
 
 .timer-frame { min-height: 246px; padding: 25px 30px; border: 2px solid var(--line); text-align: center; box-shadow: 0 0 0 2px #061121, 0 0 30px rgba(31,127,255,.18); }
 .timer-label { margin: 0; color: var(--line); font-size: 25px; font-weight: 800; letter-spacing: .1em; }
