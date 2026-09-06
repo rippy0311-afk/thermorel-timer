@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Oxanium:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=multiplayer-1" />
+    <link rel="stylesheet" href="style.css?v=sync-match-1" />
   </head>
   <body>
     <div class="viewport-warning" role="alert" aria-live="assertive">
@@ -122,9 +122,15 @@
       <aside class="art-panel" aria-label="Thermal portrait artwork">
         <img src="assets/thermorel.png" alt="A thermal-color portrait wearing sunglasses" />
       </aside>
+      <aside class="opponent-panel" id="opponentPanel" aria-label="Opponent live status">
+        <p class="meta-label">OPPONENT LIVE</p>
+        <p class="opponent-name" id="opponentName">OPPONENT</p>
+        <p class="opponent-timer" id="opponentTimer">0.00</p>
+        <dl class="opponent-stats"><div><dt>SCORE</dt><dd id="opponentScore">0</dd></div><div><dt>ROUND</dt><dd id="opponentRound">1 / 5</dd></div></dl>
+      </aside>
     </main>
     <p class="keyboard-tip">TIP: Press <kbd>Space</kbd> to start or stop.</p>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="game.js?v=multiplayer-1"></script>
+    <script src="game.js?v=sync-match-1"></script>
   </body>
 </html>
