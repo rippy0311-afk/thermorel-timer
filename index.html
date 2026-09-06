@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Oxanium:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=sync-match-2" />
+    <link rel="stylesheet" href="style.css?v=sticker-jam-1" />
   </head>
   <body>
     <div class="viewport-warning" role="alert" aria-live="assertive">
@@ -99,9 +99,10 @@
         <p class="target" id="target" aria-live="polite">TARGET 7 SECONDS</p>
         <p class="target-change" id="targetChange" aria-live="assertive" hidden></p>
 
-        <section class="timer-frame" aria-label="Elapsed time">
+        <section class="timer-frame" id="timerFrame" aria-label="Elapsed time">
           <p class="timer-label">ELAPSED</p>
           <p class="timer" id="timer" aria-live="off">0.00</p>
+          <div class="timer-stickers" aria-hidden="true"><img src="assets/thermorel.png" alt="" /><img src="assets/thermorel.png" alt="" /></div>
           <p class="timer-hidden-note" id="timerNote" hidden>Timer hidden — stop when you think the target time has arrived.</p>
         </section>
 
@@ -131,6 +132,6 @@
     </main>
     <p class="keyboard-tip">TIP: Press <kbd>Space</kbd> to start or stop.</p>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="game.js?v=sync-match-2"></script>
+    <script src="game.js?v=sticker-jam-1"></script>
   </body>
 </html>
