@@ -13,6 +13,18 @@
   </head>
   <body>
     <button class="share-button" id="shareButton" type="button" aria-label="Share THERMOREL">↗ SHARE</button>
+    <button class="account-button" id="accountButton" type="button">ACCOUNT</button>
+    <dialog class="account-dialog" id="accountDialog" aria-labelledby="accountTitle">
+      <form method="dialog" class="account-card" id="accountForm">
+        <p class="brand-kicker">PLAYER ACCESS</p><h2 id="accountTitle">CREATE ACCOUNT</h2>
+        <p id="accountCopy">Pick a nickname and a 4-digit PIN. No email needed.</p>
+        <label>NICKNAME<input id="playerName" maxlength="12" autocomplete="username" required /></label>
+        <label>4-DIGIT PIN<input id="playerPin" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="current-password" required /></label>
+        <p class="account-error" id="accountError" aria-live="polite"></p>
+        <button class="button button-primary account-submit" id="accountSubmit" value="submit">CREATE &amp; PLAY</button>
+        <button class="account-toggle" id="accountToggle" type="button">Already have an account? LOG IN</button>
+      </form>
+    </dialog>
     <main class="game-shell">
       <section class="game-panel" aria-labelledby="game-title">
         <header class="brand-frame">
