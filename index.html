@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Oxanium:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=viewport-warning-1" />
+    <link rel="stylesheet" href="style.css?v=multiplayer-1" />
   </head>
   <body>
     <div class="viewport-warning" role="alert" aria-live="assertive">
@@ -20,6 +20,7 @@
       </div>
     </div>
     <div class="top-controls">
+      <button class="online-button" id="onlineButton" type="button">◈ ONLINE MATCH</button>
       <section class="progress-drawer" aria-label="Player progress">
         <button class="progress-toggle" id="progressToggle" type="button" aria-expanded="false" aria-controls="metaBoard">▾ PROGRESS</button>
         <div class="meta-board" id="metaBoard" hidden>
@@ -52,6 +53,32 @@
         <button class="account-toggle" id="accountToggle" type="button">Already have an account? LOG IN</button>
       </form>
     </dialog>
+    <div class="online-overlay" id="onlineOverlay" hidden>
+      <section class="online-choice" id="onlineChoice" aria-labelledby="onlineTitle">
+        <button class="overlay-close" id="onlineClose" type="button" aria-label="Close online match">×</button>
+        <p class="brand-kicker">THERMOREL NETWORK</p>
+        <h2 id="onlineTitle">ONLINE MATCH</h2>
+        <p>友だちと同じターゲットに挑戦しよう。</p>
+        <div class="online-choice-actions">
+          <button class="online-action create" id="onlineCreate" type="button">CREATE ROOM</button>
+          <button class="online-action join" id="onlineJoin" type="button">JOIN ROOM</button>
+        </div>
+      </section>
+      <section class="online-join-screen" id="onlineJoinScreen" hidden aria-labelledby="joinTitle">
+        <button class="overlay-close" id="joinBack" type="button" aria-label="Back">←</button>
+        <div class="online-lobby-copy"><p class="brand-kicker">THERMOREL NETWORK</p><h2 id="joinTitle">JOIN ROOM</h2><p>友だちから受け取った6桁コードを入力。</p><input id="onlineRoomCode" maxlength="6" placeholder="ROOM CODE" aria-label="Room code" /><button class="online-action join" id="onlineJoinConfirm" type="button">JOIN MATCH</button><p class="online-error" id="onlineError" aria-live="polite"></p></div>
+        <img src="assets/thermorel.png" alt="Thermal portrait" />
+      </section>
+    </div>
+    <section class="online-lobby" id="onlineLobby" hidden aria-labelledby="lobbyTitle">
+      <button class="lobby-exit" id="lobbyExit" type="button">← EXIT</button>
+      <div class="lobby-main">
+        <div class="lobby-copy"><p class="brand-kicker">THERMOREL NETWORK</p><h2 id="lobbyTitle">ONLINE MATCH</h2><p class="lobby-status" id="lobbyStatus">ROOM READY</p><p class="lobby-code" id="lobbyCode">------</p><p class="lobby-help" id="lobbyHelp">Share this room code with your friend.</p></div>
+        <img src="assets/thermorel.png" alt="Thermal portrait" />
+        <div class="player-roster" aria-label="Players in this room"><p>PLAYERS IN ROOM</p><div class="player-row" id="hostPlayer">HOST · —</div><div class="player-row" id="guestPlayer">GUEST · WAITING FOR PLAYER</div></div>
+      </div>
+      <button class="game-start" id="gameStart" type="button" hidden>GAME START</button>
+    </section>
     <main class="game-shell">
       <section class="game-panel" aria-labelledby="game-title">
         <header class="brand-frame">
@@ -98,6 +125,6 @@
     </main>
     <p class="keyboard-tip">TIP: Press <kbd>Space</kbd> to start or stop.</p>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="game.js?v=7bca90b"></script>
+    <script src="game.js?v=multiplayer-1"></script>
   </body>
 </html>
