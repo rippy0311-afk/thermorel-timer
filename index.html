@@ -24,6 +24,11 @@
           <button class="mode-button is-selected" id="soloMode" type="button" aria-pressed="true">SOLO</button>
           <button class="mode-button" id="versusMode" type="button" aria-pressed="false">VERSUS</button>
         </div>
+        <section class="room-panel" aria-label="Online match room">
+          <p class="room-title">ONLINE MATCH</p>
+          <div class="room-actions"><button class="room-button" id="createRoom" type="button">CREATE ROOM</button><input id="roomCode" maxlength="6" placeholder="ROOM CODE" aria-label="Room code" /><button class="room-button" id="joinRoom" type="button">JOIN</button></div>
+          <p id="roomStatus" class="room-status">Create a room, then share the 6-digit code.</p>
+        </section>
 
         <p class="target" id="target" aria-live="polite">TARGET 7 SECONDS</p>
         <p class="target-change" id="targetChange" aria-live="assertive" hidden></p>
@@ -68,6 +73,7 @@
       </article>
     </section>
     <p class="keyboard-tip">TIP: Press <kbd>Space</kbd> to start or stop.</p>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="game.js"></script>
   </body>
 </html>
