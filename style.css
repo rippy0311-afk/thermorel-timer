@@ -129,7 +129,7 @@ kbd { padding: 2px 6px; border: 1px solid #526273; border-radius: 3px; color: va
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
 
 /* Desktop only: keep the always-visible sticker from being clipped in a cramped window. */
-@media (min-width: 761px) and (max-width: 1100px), (min-width: 761px) and (max-height: 639px) {
+@media (hover: hover) and (pointer: fine) and (max-width: 1100px), (hover: hover) and (pointer: fine) and (max-height: 639px) {
   .viewport-warning { position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 24px; background: rgba(0,0,0,.84); backdrop-filter: blur(5px); }
   .viewport-warning-card { width: min(480px, 100%); padding: 30px; border: 1px solid var(--pink); background: linear-gradient(145deg,#170713,#050505); box-shadow: 0 0 44px rgba(255,22,134,.3); text-align: center; }
   .viewport-warning-card p { margin: 0 0 11px; color: var(--pink); font: 800 13px "Oxanium",sans-serif; letter-spacing: .16em; }
