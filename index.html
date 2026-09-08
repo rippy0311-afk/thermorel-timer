@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Oxanium:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=heat-flash-1" />
+    <link rel="stylesheet" href="style.css?v=online-result-fix-1" />
   </head>
   <body>
     <div class="viewport-warning" role="alert" aria-live="assertive">
@@ -132,6 +132,13 @@
         </div>
 
         <p class="result" id="result" aria-live="polite">Press START. Stop as close to the target as you can.</p>
+        <section class="online-result-screen" id="onlineResultScreen" aria-live="assertive" hidden>
+          <p class="brand-kicker">THERMOREL NETWORK</p>
+          <h2 id="onlineResultTitle">MATCH COMPLETE</h2>
+          <p class="online-result-score" id="onlineResultScore">0 POINTS</p>
+          <p class="online-result-copy" id="onlineResultCopy">YOUR RESULT IS READY.</p>
+          <button class="online-result-back" id="onlineResultBack" type="button">RETURN TO MENU</button>
+        </section>
 
         <dl class="stats" aria-label="Game status">
           <div class="stat stat-score"><dt>SCORE</dt><dd id="score">0</dd></div>
@@ -155,6 +162,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="features/feature-flags.js?v=heat-flash-1"></script>
     <script src="features/heat-flash.js?v=heat-flash-1"></script>
-    <script src="game.js?v=heat-flash-1"></script>
+    <script src="game.js?v=online-result-fix-1"></script>
   </body>
 </html>
