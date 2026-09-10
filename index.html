@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Oxanium:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=multiplayer-spectate-1" />
+    <link rel="stylesheet" href="style.css?v=community-1" />
   </head>
   <body>
     <div class="viewport-warning" role="alert" aria-live="assertive">
@@ -109,6 +109,7 @@
         <img src="assets/thermorel.png" alt="Thermal portrait" />
         <div class="player-roster" aria-label="Players in this room"><p id="rosterLabel">PLAYERS 0 / 8</p><div id="playerRosterList"></div></div>
       </div>
+      <button class="game-start" id="inviteFriends" type="button" hidden>INVITE FRIENDS</button>
       <button class="game-start" id="gameStart" type="button" hidden>GAME START</button>
     </section>
     <section class="spectator-view" id="spectatorView" hidden aria-labelledby="spectatorViewTitle"><button class="lobby-exit" id="spectatorExit" type="button">← EXIT</button><p class="brand-kicker">LIVE SPECTATOR</p><h2 id="spectatorViewTitle">ROOM ------</h2><p class="lobby-help" id="spectatorViewCopy">Watching all players live.</p><div class="spectator-grid" id="spectatorGrid"></div></section>
@@ -175,6 +176,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="features/feature-flags.js?v=heat-flash-1"></script>
     <script src="features/heat-flash.js?v=heat-flash-1"></script>
+    <script src="features/community.js?v=community-1"></script>
     <script src="game.js?v=multiplayer-spectate-1"></script>
   </body>
 </html>
