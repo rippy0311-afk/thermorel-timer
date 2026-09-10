@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Oxanium:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=online-result-fix-1" />
+    <link rel="stylesheet" href="style.css?v=multiplayer-spectate-1" />
   </head>
   <body>
     <div class="viewport-warning" role="alert" aria-live="assertive">
@@ -34,6 +34,7 @@
     </div>
     <div class="top-controls">
       <button class="online-button" id="onlineButton" type="button">◈ ONLINE MATCH</button>
+      <button class="online-button spectate-button" id="spectateButton" type="button">◉ SPECTATE</button>
       <section class="progress-drawer" aria-label="Player progress">
         <button class="progress-toggle" id="progressToggle" type="button" aria-expanded="false" aria-controls="metaBoard">▾ PROGRESS</button>
         <div class="meta-board" id="metaBoard" hidden>
@@ -84,10 +85,21 @@
         <p>ROOMを準備しています…</p>
         <button class="loading-cancel" id="onlineCreateCancel" type="button">× CANCEL</button>
       </section>
+      <section class="online-choice" id="onlineCreateScreen" hidden aria-labelledby="createTitle">
+        <button class="overlay-close" id="createBack" type="button" aria-label="Back">←</button>
+        <p class="brand-kicker">ROOM VISIBILITY</p><h2 id="createTitle">SPECTATORS?</h2>
+        <p>PUBLICは観戦タブに表示。SECRETはコードを知る人だけ観戦できます。</p>
+        <div class="online-choice-actions"><button class="online-action create" id="createPublic" type="button">PUBLIC</button><button class="online-action join" id="createSecret" type="button">SECRET</button></div>
+      </section>
       <section class="online-join-screen" id="onlineJoinScreen" hidden aria-labelledby="joinTitle">
         <button class="overlay-close" id="joinBack" type="button" aria-label="Back">←</button>
         <div class="online-lobby-copy"><p class="brand-kicker">THERMOREL NETWORK</p><h2 id="joinTitle">JOIN ROOM</h2><p>友だちから受け取った6桁コードを入力。</p><input id="onlineRoomCode" maxlength="6" placeholder="ROOM CODE" aria-label="Room code" /><button class="online-action join" id="onlineJoinConfirm" type="button">JOIN MATCH</button><p class="online-error" id="onlineError" aria-live="polite"></p></div>
         <img src="assets/thermorel.png" alt="Thermal portrait" />
+      </section>
+      <section class="online-join-screen" id="spectateScreen" hidden aria-labelledby="spectateTitle">
+        <button class="overlay-close" id="spectateBack" type="button" aria-label="Back">←</button>
+        <div class="online-lobby-copy"><p class="brand-kicker">THERMOREL NETWORK</p><h2 id="spectateTitle">SPECTATE</h2><p>SECRET ROOMは6桁コードで観戦できます。</p><input id="spectateRoomCode" maxlength="6" placeholder="SECRET CODE" aria-label="Secret room code" /><button class="online-action join" id="spectateJoin" type="button">WATCH ROOM</button><p class="online-error" id="spectateError" aria-live="polite"></p></div>
+        <div><p class="brand-kicker">PUBLIC ROOMS</p><div class="public-room-list" id="publicRoomList"></div></div>
       </section>
     </div>
     <section class="online-lobby" id="onlineLobby" hidden aria-labelledby="lobbyTitle">
@@ -95,10 +107,11 @@
       <div class="lobby-main">
         <div class="lobby-copy"><p class="brand-kicker">THERMOREL NETWORK</p><h2 id="lobbyTitle">ONLINE MATCH</h2><p class="lobby-status" id="lobbyStatus">ROOM READY</p><p class="lobby-code" id="lobbyCode">------</p><p class="lobby-help" id="lobbyHelp">Share this room code with your friend.</p></div>
         <img src="assets/thermorel.png" alt="Thermal portrait" />
-        <div class="player-roster" aria-label="Players in this room"><p>PLAYERS IN ROOM</p><div class="player-row" id="hostPlayer">HOST · —</div><div class="player-row" id="guestPlayer">GUEST · WAITING FOR PLAYER</div></div>
+        <div class="player-roster" aria-label="Players in this room"><p id="rosterLabel">PLAYERS 0 / 8</p><div id="playerRosterList"></div></div>
       </div>
       <button class="game-start" id="gameStart" type="button" hidden>GAME START</button>
     </section>
+    <section class="spectator-view" id="spectatorView" hidden aria-labelledby="spectatorViewTitle"><button class="lobby-exit" id="spectatorExit" type="button">← EXIT</button><p class="brand-kicker">LIVE SPECTATOR</p><h2 id="spectatorViewTitle">ROOM ------</h2><p class="lobby-help" id="spectatorViewCopy">Watching all players live.</p><div class="spectator-grid" id="spectatorGrid"></div></section>
     <main class="game-shell">
       <section class="game-panel" aria-labelledby="game-title">
         <header class="brand-frame">
@@ -162,6 +175,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="features/feature-flags.js?v=heat-flash-1"></script>
     <script src="features/heat-flash.js?v=heat-flash-1"></script>
-    <script src="game.js?v=mode-routes-1"></script>
+    <script src="game.js?v=multiplayer-spectate-1"></script>
   </body>
 </html>
