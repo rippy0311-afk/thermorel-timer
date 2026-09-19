@@ -37,12 +37,12 @@
         <button class="progress-toggle" id="progressToggle" type="button" aria-expanded="false" aria-controls="metaBoard">▾ PROGRESS</button>
         <div class="meta-board" id="metaBoard" hidden>
           <article class="meta-card highscore-card">
-            <p class="meta-label">PERSONAL BEST</p>
+            <p class="meta-label">SOLO BEST</p>
             <p class="best-score" id="bestScore">0</p>
             <p class="meta-copy" id="bestNote">Finish a game to set a record.</p>
           </article>
           <article class="meta-card leaderboard-card">
-            <p class="meta-label">LOCAL RANKING</p>
+            <p class="meta-label">SOLO RANKING</p>
             <ol class="leaderboard" id="leaderboard" aria-label="Local top scores"></ol>
           </article>
           <article class="meta-card achievement-card">
@@ -155,7 +155,7 @@
         <section class="game-summary" id="gameSummary" aria-label="Game result" aria-live="polite" hidden>
           <p><span>RESULT</span><strong id="summaryResult">0 PT</strong></p>
           <p><span>TARGET GAP</span><strong id="summaryGap">0.00s</strong></p>
-          <p><span>PERSONAL BEST</span><strong id="summaryBest">—</strong></p>
+          <p><span>SOLO BEST</span><strong id="summaryBest">—</strong></p>
         </section>
         <section class="online-result-screen" id="onlineResultScreen" aria-live="assertive" hidden>
           <p class="brand-kicker">THERMOREL NETWORK</p>
@@ -187,7 +187,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="features/feature-flags.js?v=heat-flash-1"></script>
     <script src="features/heat-flash.js?v=heat-flash-1"></script>
-    <script src="game.js?v=menu-1"></script>
+    <script src="game.js?v=solo-ranking-1"></script>
     <script src="features/community.js?v=menu-1"></script>
   </body>
 </html>
