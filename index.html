@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Oxanium:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=sticker-warning-1" />
+    <link rel="stylesheet" href="style.css?v=menu-1" />
   </head>
   <body>
     <div class="viewport-warning" role="alert" aria-live="assertive">
@@ -33,8 +33,6 @@
       </div>
     </div>
     <div class="top-controls">
-      <button class="online-button" id="onlineButton" type="button">◈ ONLINE MATCH</button>
-      <button class="online-button spectate-button" id="spectateButton" type="button">◉ SPECTATE</button>
       <section class="progress-drawer" aria-label="Player progress">
         <button class="progress-toggle" id="progressToggle" type="button" aria-expanded="false" aria-controls="metaBoard">▾ PROGRESS</button>
         <div class="meta-board" id="metaBoard" hidden>
@@ -55,6 +53,12 @@
       </section>
       <button class="account-button" id="accountButton" type="button" onclick="document.getElementById('accountDialog').showModal()">◉ ACCOUNT</button>
       <button class="share-button" id="shareButton" type="button" aria-label="Share THERMOREL">↗ SHARE</button>
+      <button class="menu-button" id="menuToggle" type="button" aria-expanded="false" aria-controls="moreMenu">☰ MENU</button>
+      <div class="more-menu" id="moreMenu" hidden>
+        <button class="online-button" id="onlineButton" type="button">◈ ONLINE MATCH</button>
+        <button class="online-button spectate-button" id="spectateButton" type="button">◉ SPECTATE</button>
+        <div class="community-menu" id="communityMenu"></div>
+      </div>
     </div>
     <dialog class="account-dialog" id="accountDialog" aria-labelledby="accountTitle">
       <form method="dialog" class="account-card" id="accountForm">
@@ -183,7 +187,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="features/feature-flags.js?v=heat-flash-1"></script>
     <script src="features/heat-flash.js?v=heat-flash-1"></script>
-    <script src="game.js?v=sticker-warning-1"></script>
-    <script src="features/community.js?v=community-2"></script>
+    <script src="game.js?v=menu-1"></script>
+    <script src="features/community.js?v=menu-1"></script>
   </body>
 </html>

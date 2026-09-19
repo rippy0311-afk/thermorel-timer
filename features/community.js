@@ -6,14 +6,14 @@
   const name = () => (account().name || 'PLAYER').slice(0,12);
   const developer = () => name().toUpperCase() === 'RIHI1';
   const esc = value => String(value || '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const top = document.querySelector('.top-controls');
+  const top = document.querySelector('#communityMenu');
   const addButton = (id,label) => { const button=document.createElement('button'); button.id=id; button.type='button'; button.className='online-button community-button'; button.textContent=label; top?.prepend(button); return button; };
   const feedbackButton=addButton('feedbackButton','✦ FEEDBACK'), friendsButton=addButton('friendsButton','◎ FRIENDS'), meButton=addButton('meButton','◉ ME');
   const shell=document.createElement('div'); shell.className='community-overlay'; shell.hidden=true;
   shell.innerHTML='<section class="community-card"><button class="community-close" type="button" aria-label="Close">×</button><div class="community-tabs"><button data-tab="feedback">FEEDBACK</button><button data-tab="friends">FRIENDS</button><button data-tab="me">ME</button></div><div id="communityBody"></div></section>';
   document.body.append(shell);
   const body=shell.querySelector('#communityBody');
-  const open=tab=>{shell.hidden=false; render(tab)}; const close=()=>shell.hidden=true;
+  const open=tab=>{const menu=document.querySelector('#moreMenu'),toggle=document.querySelector('#menuToggle');if(menu)menu.hidden=true;if(toggle)toggle.setAttribute('aria-expanded','false');shell.hidden=false;render(tab)}; const close=()=>shell.hidden=true;
   shell.querySelector('.community-close').onclick=close; feedbackButton.onclick=()=>open('feedback'); friendsButton.onclick=()=>open('friends'); meButton.onclick=()=>open('me');
   const notice = text => `<p class="community-note">${esc(text)}</p>`;
   async function feedback(){

@@ -24,6 +24,7 @@ body {
 }
 .viewport-warning { display: none; }
 .top-controls { position:fixed; z-index:20; top:18px; right:20px; display:flex; gap:6px; align-items:center; }
+.menu-button { padding:9px 12px; border:1px solid var(--line); background:linear-gradient(135deg,#07162b,#050505); color:#b8d8ff; cursor:pointer; font:800 11px/1 "Oxanium",sans-serif; letter-spacing:.09em; box-shadow:0 0 15px rgba(31,127,255,.25); }.menu-button:hover{border-color:var(--lime);color:var(--lime);transform:translateY(-1px)}.more-menu{position:absolute;top:calc(100% + 7px);right:0;z-index:21;display:grid;gap:6px;width:190px;padding:8px;border:1px solid var(--line);background:#08090e;box-shadow:0 14px 30px rgba(0,0,0,.58)}.more-menu[hidden]{display:none}.more-menu .online-button,.community-menu .community-button{width:100%;text-align:left}.community-menu{display:grid;gap:6px}
 .share-button { padding: 9px 12px; border: 1px solid #3c8cff; background: linear-gradient(135deg,#07162b,#050505); color: var(--white); cursor: pointer; font: 800 11px/1 "Oxanium", sans-serif; letter-spacing: .09em; box-shadow: 0 0 15px rgba(31,127,255,.3); }
 .account-button { padding: 9px 12px; border: 1px solid #ff3c9c; background: linear-gradient(135deg,#2b071e,#050505); color: #ffd4e9; cursor: pointer; font: 800 11px/1 "Oxanium",sans-serif; letter-spacing:.09em; box-shadow:0 0 15px rgba(255,22,134,.32); }
 .account-button:hover { border-color:var(--lime); color:var(--lime); transform:translateY(-1px); }
