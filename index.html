@@ -148,6 +148,11 @@
         </div>
 
         <p class="result" id="result" aria-live="polite">Press START. Stop as close to the target as you can.</p>
+        <section class="game-summary" id="gameSummary" aria-label="Game result" aria-live="polite" hidden>
+          <p><span>RESULT</span><strong id="summaryResult">0 PT</strong></p>
+          <p><span>TARGET GAP</span><strong id="summaryGap">0.00s</strong></p>
+          <p><span>PERSONAL BEST</span><strong id="summaryBest">—</strong></p>
+        </section>
         <section class="online-result-screen" id="onlineResultScreen" aria-live="assertive" hidden>
           <p class="brand-kicker">THERMOREL NETWORK</p>
           <h2 id="onlineResultTitle">MATCH COMPLETE</h2>
@@ -178,7 +183,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="features/feature-flags.js?v=heat-flash-1"></script>
     <script src="features/heat-flash.js?v=heat-flash-1"></script>
-    <script src="game.js?v=community-1"></script>
+    <script src="game.js?v=summary-1"></script>
     <script src="features/community.js?v=community-2"></script>
   </body>
 </html>
