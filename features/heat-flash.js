@@ -1,5 +1,5 @@
 (() => {
-  const enabled = () => window.THERMOREL_FEATURES?.heatFlash === true;
+  const enabled = () => window.thermorelFeature?.('heatFlash') === true;
 
   document.addEventListener('thermorel:round-result', event => {
     if (!enabled() || !event.detail?.accurate) return;
