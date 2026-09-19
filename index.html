@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Oxanium:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=menu-1" />
+    <link rel="stylesheet" href="style.css?v=calm-1" />
   </head>
   <body>
     <div class="viewport-warning" role="alert" aria-live="assertive">
@@ -58,6 +58,10 @@
         <button class="online-button" id="onlineButton" type="button">◈ ONLINE MATCH</button>
         <button class="online-button spectate-button" id="spectateButton" type="button">◉ SPECTATE</button>
         <div class="community-menu" id="communityMenu"></div>
+        <section class="motion-switch" aria-label="Visual effects">
+          <p>VISUALS</p>
+          <div><button id="motionNormal" type="button">NORMAL</button><button id="motionCalm" type="button">CALM</button></div>
+        </section>
       </div>
     </div>
     <dialog class="account-dialog" id="accountDialog" aria-labelledby="accountTitle">
@@ -187,7 +191,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="features/feature-flags.js?v=heat-flash-1"></script>
     <script src="features/heat-flash.js?v=heat-flash-1"></script>
-    <script src="game.js?v=solo-ranking-1"></script>
+    <script src="game.js?v=calm-1"></script>
     <script src="features/community.js?v=menu-1"></script>
   </body>
 </html>
